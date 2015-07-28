@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -21,7 +21,7 @@
          * @method initializer
          * @param config {Object} Configuration object literal for the editor.
          */
-        initializer: function(config) {
+        initializer: function (config) {
             var node = this.get('srcNode');
 
             if (this.get('enableContentEditable')) {
@@ -43,7 +43,7 @@
 
             AlloyEditor.Lang.mix(editor.config, config);
 
-            editor.once('contentDom', function() {
+            editor.once('contentDom', function () {
                 editor.editable().addClass('ae-editable');
             });
 
@@ -59,7 +59,7 @@
          * @protected
          * @method destructor
          */
-        destructor: function() {
+        destructor: function () {
             if (this._editorUIElement) {
                 React.unmountComponentAtNode(this._editorUIElement);
                 this._editorUIElement.parentNode.removeChild(this._editorUIElement);
@@ -84,7 +84,7 @@
          * @method _getNativeEditor
          * @return {Object} The current instance of CKEditor.
          */
-        _getNativeEditor: function() {
+        _getNativeEditor: function () {
             return this._editor;
         },
 
@@ -94,7 +94,7 @@
          * @protected
          * @method _renderUI
          */
-        _renderUI: function() {
+        _renderUI: function () {
             var editorUIElement = document.createElement('div');
             editorUIElement.className = 'ae-ui';
 
@@ -114,7 +114,7 @@
         },
 
         /**
-         * The function returns an HTML element from the passed value. If the passed value is a string, it should be 
+         * The function returns an HTML element from the passed value. If the passed value is a string, it should be
          * the Id of the element which have to be retrieved from the DOM.
          * If an HTML Element is passed, the element itself will be returned.
          *
@@ -124,7 +124,7 @@
          * or the HTML element itself. If Id is passed, the HTML element will be retrieved from the DOM.
          * @return {HTMLElement} An HTML element.
          */
-        _toElement: function(value) {
+        _toElement: function (value) {
             if (AlloyEditor.Lang.isString(value)) {
                 value = document.getElementById(value);
             }
@@ -142,7 +142,7 @@
          * @param {Any} The value to be checked
          * @return {Boolean} True if the current value is valid configuration, false otherwise
          */
-        _validateAllowedContent: function(value) {
+        _validateAllowedContent: function (value) {
             return AlloyEditor.Lang.isString(value) || AlloyEditor.Lang.isObject(value) || AlloyEditor.Lang.isBoolean(value);
         },
 
@@ -154,7 +154,7 @@
          * @param {Any} The value to be checked
          * @return {Boolean} True if the current value is valid toolbars configuration, false otherwise
          */
-        _validateToolbars: function(value) {
+        _validateToolbars: function (value) {
             return AlloyEditor.Lang.isObject(value) || AlloyEditor.Lang.isNull(value);
         }
     }, {
@@ -212,7 +212,7 @@
              */
             extraPlugins: {
                 validator: AlloyEditor.Lang.isString,
-                value: 'uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink',
+                value: 'uicore,selectionregion,addimages,placeholder,tabletools,tableresize,autolink',
                 writeOnce: true
             },
 

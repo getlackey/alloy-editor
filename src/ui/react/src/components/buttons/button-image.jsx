@@ -58,8 +58,9 @@
                     <button aria-label={AlloyEditor.Strings.image} className="ae-button" data-type="button-image" onClick={this.handleClick} tabIndex={this.props.tabIndex} title={AlloyEditor.Strings.image}>
                         <span className="ae-icon-image"></span>
                     </button>
-
-                    <input onChange={this._onInputChange} ref="fileInput" style={inputSyle} type="file" />
+                    <form ref="fileForm">
+                        <input onChange={this._onInputChange} name="file" ref="fileInput" style={inputSyle} type="file" />
+                    </form>
                 </div>
             );
         },
@@ -85,28 +86,59 @@
          * @method _onInputChange
          */
         _onInputChange: function() {
-            var reader = new FileReader();
-            var inputEl = React.findDOMNode(this.refs.fileInput);
+            var reader = new FileReader(),
+                inputEl = React.findDOMNode(this.refs.fileInput),
+                formEl = React.findDOMNode(this.refs.fileForm),
+                self = this;
 
-            reader.onload = function(event) {
-                var editor = this.props.editor.get('nativeEditor');
+            // function progressHandlingFunction(e){
+            //     if(e.lengthComputable){
+            //         //$('progress').attr({value:e.loaded,max:e.total});
+            //         console.log('progress', e.loaded, e.total);
+            //     }
+            // }
 
-                var el = CKEDITOR.dom.element.createFromHtml('<img src="' + event.target.result + '">');
+            $.ajax({
+                url: 'media',  //Server script to process data
+                type: 'POST',
+                // xhr: function() {  // Custom XMLHttpRequest
+                //     var myXhr = $.ajaxSettings.xhr();
+                //     if(myXhr.upload){ // Check if upload property exists
+                //         myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+                //     }
+                //     return myXhr;
+                // },
+                //Ajax events
+                // beforeSend: function () {
+                //     console.log('beforeSend', arguments);
+                // },
+                success: function (data) {
+                    var editor = self.props.editor.get('nativeEditor'),
+                        el = CKEDITOR.dom.element.createFromHtml('<img src="' + data.url + '">'),
+                        imageData;
 
-                editor.insertElement(el);
+                    editor.insertElement(el);
 
-                editor.fire('actionPerformed', this);
+                    editor.fire('actionPerformed', self);
 
-                var imageData = {
-                    el: el,
-                    file: inputEl.files[0]
-                };
+                    imageData = {
+                        el: el,
+                        file: inputEl.files[0]
+                    };
 
-                editor.fire('imageAdd', imageData);
-            }.bind(this);
-
-            reader.readAsDataURL(inputEl.files[0]);
-
+                    editor.fire('imageAdd', imageData);
+                },
+                error: function () {
+                    console.error(arguments);
+                },
+                // Form data
+                data: new FormData(formEl),
+                //Options to tell jQuery not to process data or worry about content-type.
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            
             inputEl.value = '';
         }
 

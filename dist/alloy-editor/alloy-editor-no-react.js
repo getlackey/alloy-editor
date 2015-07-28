@@ -2928,10 +2928,10 @@ CKEDITOR.disableAutoInline = true;
             }
             // Otherwise calculate positions based on the table (for last cell).
             else {
-                x = table.getDocumentPosition().x;
+                    x = table.getDocumentPosition().x;
 
-                rtl ? pillarLeft = x : pillarRight = x + table.$.offsetWidth;
-            }
+                    rtl ? pillarLeft = x : pillarRight = x + table.$.offsetWidth;
+                }
 
             pillarWidth = Math.max(pillarRight - pillarLeft, 4);
 
@@ -3400,14 +3400,14 @@ CKEDITOR.disableAutoInline = true;
 					if (cell.$.rowSpan == 1) cell.remove();
 					// Row spanned cell.
 					else {
-						// Span row of the cell, reduce spanning.
-						cell.$.rowSpan -= 1;
-						// Root row of the cell, root cell to next row.
-						if (cellRowIndex == i) {
-							var nextMapRow = map[i + 1];
-							nextMapRow[j - 1] ? cell.insertAfter(new CKEDITOR.dom.element(nextMapRow[j - 1])) : new CKEDITOR.dom.element(table.$.rows[i + 1]).append(cell, 1);
+							// Span row of the cell, reduce spanning.
+							cell.$.rowSpan -= 1;
+							// Root row of the cell, root cell to next row.
+							if (cellRowIndex == i) {
+								var nextMapRow = map[i + 1];
+								nextMapRow[j - 1] ? cell.insertAfter(new CKEDITOR.dom.element(nextMapRow[j - 1])) : new CKEDITOR.dom.element(table.$.rows[i + 1]).append(cell, 1);
+							}
 						}
-					}
 
 					j += cell.$.colSpan - 1;
 				}
@@ -3734,8 +3734,8 @@ CKEDITOR.disableAutoInline = true;
 		// Be able to merge cells only if actual dimension of selected
 		// cells equals to the caculated rectangle.
 		else {
-			return totalRowSpan * totalColSpan == dimension;
-		}
+				return totalRowSpan * totalColSpan == dimension;
+			}
 	}
 
 	function verticalSplitCell(selection, isDetect) {
@@ -4611,26 +4611,26 @@ CKEDITOR.tools.buildTableMap = function (table) {
             // else if the attribute has readOnly flag, set the default value from the attribute,
             // regardless if there is value or not
             else if (currentAttr.readOnly) {
-                value = currentAttr.value;
-            }
-            // else if the attribute has writeOnce value, set it from the passed configuration or from the
-            // default value, in this order. Otherwise, return miserable.
-            else if (currentAttr.writeOnce) {
-                if (hasPassedValueViaConfig) {
-                    value = this.__config__[attr];
-                } else if (hasDefaultValue) {
                     value = currentAttr.value;
-                } else {
-                    return;
                 }
-            }
-            // These two cases below are easy - set the value to be from the passed config or
-            // from the default value, in this order.
-            else if (hasPassedValueViaConfig) {
-                value = this.__config__[attr];
-            } else if (hasDefaultValue) {
-                value = currentAttr.value;
-            }
+                // else if the attribute has writeOnce value, set it from the passed configuration or from the
+                // default value, in this order. Otherwise, return miserable.
+                else if (currentAttr.writeOnce) {
+                        if (hasPassedValueViaConfig) {
+                            value = this.__config__[attr];
+                        } else if (hasDefaultValue) {
+                            value = currentAttr.value;
+                        } else {
+                            return;
+                        }
+                    }
+                    // These two cases below are easy - set the value to be from the passed config or
+                    // from the default value, in this order.
+                    else if (hasPassedValueViaConfig) {
+                            value = this.__config__[attr];
+                        } else if (hasDefaultValue) {
+                            value = currentAttr.value;
+                        }
 
             // If there is validator, and user passed config object - check the returned value.
             // If it is false, then set as initial value the default one.
@@ -4967,7 +4967,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
         },
 
         /**
-         * The function returns an HTML element from the passed value. If the passed value is a string, it should be 
+         * The function returns an HTML element from the passed value. If the passed value is a string, it should be
          * the Id of the element which have to be retrieved from the DOM.
          * If an HTML Element is passed, the element itself will be returned.
          *
@@ -5065,7 +5065,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
              */
             extraPlugins: {
                 validator: AlloyEditor.Lang.isString,
-                value: 'uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink',
+                value: 'uicore,selectionregion,addimages,placeholder,tabletools,tableresize,autolink',
                 writeOnce: true
             },
 
@@ -6393,8 +6393,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.bold, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-bold', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.bold },
-                React.createElement('span', { className: 'ae-icon-bold' })
+                { 'aria-label': AlloyEditor.Strings.bold, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-bold", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.bold },
+                React.createElement('span', { className: "ae-icon-bold" })
             );
         }
     });
@@ -6476,18 +6476,18 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-camera' },
+                { className: "ae-camera" },
                 React.createElement(
                     'video',
-                    { ref: 'videoContainer' },
+                    { ref: "videoContainer" },
                     'Video stream not available.'
                 ),
                 React.createElement(
                     'button',
-                    { className: 'ae-camera-shoot', onClick: this.takePhoto, ref: 'buttonTakePhoto' },
+                    { className: "ae-camera-shoot", onClick: this.takePhoto, ref: "buttonTakePhoto" },
                     'Take photo'
                 ),
-                React.createElement('canvas', { className: 'ae-camera-canvas', ref: 'canvasContainer' })
+                React.createElement('canvas', { className: "ae-camera-canvas", ref: "canvasContainer" })
             );
         },
 
@@ -6654,8 +6654,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
                 return React.createElement(
                     'button',
-                    { 'aria-label': AlloyEditor.Strings.camera, className: 'ae-button', 'data-type': 'button-image-camera', disabled: disabled, onClick: this.props.requestExclusive.bind(ButtonCamera.key), tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.camera },
-                    React.createElement('span', { className: 'ae-icon-camera' })
+                    { 'aria-label': AlloyEditor.Strings.camera, className: "ae-button", 'data-type': "button-image-camera", disabled: disabled, onClick: this.props.requestExclusive.bind(ButtonCamera.key), tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.camera },
+                    React.createElement('span', { className: "ae-icon-camera" })
                 );
             }
         }
@@ -6744,8 +6744,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.code, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-code', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.code },
-                React.createElement('span', { className: 'ae-icon-code' })
+                { 'aria-label': AlloyEditor.Strings.code, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-code", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.code },
+                React.createElement('span', { className: "ae-icon-code" })
             );
         }
     });
@@ -6925,10 +6925,10 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             return React.createElement(
                 'div',
-                { className: 'ae-dropdown ae-arrow-box ae-arrow-box-top-left', onFocus: this.focus, onKeyDown: this.handleKey, tabIndex: '0' },
+                { className: "ae-dropdown ae-arrow-box ae-arrow-box-top-left", onFocus: this.focus, onKeyDown: this.handleKey, tabIndex: "0" },
                 React.createElement(
                     'ul',
-                    { className: 'ae-listbox', id: this.props.listId, role: 'listbox' },
+                    { className: "ae-listbox", id: this.props.listId, role: "listbox" },
                     this._renderActions(this.props.commands)
                 )
             );
@@ -6949,7 +6949,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 items = commands.map(function (item) {
                     return React.createElement(
                         'li',
-                        { key: item.command, role: 'option' },
+                        { key: item.command, role: "option" },
                         React.createElement(AlloyEditor.ButtonCommandListItem, { command: item.command, description: typeof item.label === 'string' ? item.label : item.label(), editor: editor })
                     );
                 });
@@ -7042,8 +7042,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.h1, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-h1', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.h1 },
-                React.createElement('span', { className: 'ae-icon-h1' })
+                { 'aria-label': AlloyEditor.Strings.h1, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-h1", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.h1 },
+                React.createElement('span', { className: "ae-icon-h1" })
             );
         }
     });
@@ -7131,8 +7131,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.h2, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-h2', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.h2 },
-                React.createElement('span', { className: 'ae-icon-h2' })
+                { 'aria-label': AlloyEditor.Strings.h2, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-h2", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.h2 },
+                React.createElement('span', { className: "ae-icon-h2" })
             );
         }
     });
@@ -7218,8 +7218,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.horizontalrule, className: 'ae-button', 'data-type': 'button-hline', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.horizontalrule },
-                React.createElement('span', { className: 'ae-icon-separator' })
+                { 'aria-label': AlloyEditor.Strings.horizontalrule, className: "ae-button", 'data-type': "button-hline", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.horizontalrule },
+                React.createElement('span', { className: "ae-icon-separator" })
             );
         }
     });
@@ -7310,8 +7310,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.alignLeft, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-image-align-left', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignLeft },
-                React.createElement('span', { className: 'ae-icon-align-left' })
+                { 'aria-label': AlloyEditor.Strings.alignLeft, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-image-align-left", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignLeft },
+                React.createElement('span', { className: "ae-icon-align-left" })
             );
         }
     });
@@ -7402,8 +7402,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.alignRight, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-image-align-right', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignRight },
-                React.createElement('span', { className: 'ae-icon-align-right' })
+                { 'aria-label': AlloyEditor.Strings.alignRight, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-image-align-right", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignRight },
+                React.createElement('span', { className: "ae-icon-align-right" })
             );
         }
     });
@@ -7474,10 +7474,14 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 null,
                 React.createElement(
                     'button',
-                    { 'aria-label': AlloyEditor.Strings.image, className: 'ae-button', 'data-type': 'button-image', onClick: this.handleClick, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.image },
-                    React.createElement('span', { className: 'ae-icon-image' })
+                    { 'aria-label': AlloyEditor.Strings.image, className: "ae-button", 'data-type': "button-image", onClick: this.handleClick, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.image },
+                    React.createElement('span', { className: "ae-icon-image" })
                 ),
-                React.createElement('input', { onChange: this._onInputChange, ref: 'fileInput', style: inputSyle, type: 'file' })
+                React.createElement(
+                    'form',
+                    { ref: "fileForm" },
+                    React.createElement('input', { onChange: this._onInputChange, name: "file", ref: "fileInput", style: inputSyle, type: "file" })
+                )
             );
         },
 
@@ -7502,27 +7506,58 @@ CKEDITOR.tools.buildTableMap = function (table) {
          * @method _onInputChange
          */
         _onInputChange: function _onInputChange() {
-            var reader = new FileReader();
-            var inputEl = React.findDOMNode(this.refs.fileInput);
+            var reader = new FileReader(),
+                inputEl = React.findDOMNode(this.refs.fileInput),
+                formEl = React.findDOMNode(this.refs.fileForm),
+                self = this;
 
-            reader.onload = (function (event) {
-                var editor = this.props.editor.get('nativeEditor');
+            // function progressHandlingFunction(e){
+            //     if(e.lengthComputable){
+            //         //$('progress').attr({value:e.loaded,max:e.total});
+            //         console.log('progress', e.loaded, e.total);
+            //     }
+            // }
 
-                var el = CKEDITOR.dom.element.createFromHtml('<img src="' + event.target.result + '">');
+            $.ajax({
+                url: 'media', //Server script to process data
+                type: 'POST',
+                // xhr: function() {  // Custom XMLHttpRequest
+                //     var myXhr = $.ajaxSettings.xhr();
+                //     if(myXhr.upload){ // Check if upload property exists
+                //         myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+                //     }
+                //     return myXhr;
+                // },
+                //Ajax events
+                // beforeSend: function () {
+                //     console.log('beforeSend', arguments);
+                // },
+                success: function success(data) {
+                    var editor = self.props.editor.get('nativeEditor'),
+                        el = CKEDITOR.dom.element.createFromHtml('<img src="' + data.url + '">'),
+                        imageData;
 
-                editor.insertElement(el);
+                    editor.insertElement(el);
 
-                editor.fire('actionPerformed', this);
+                    editor.fire('actionPerformed', self);
 
-                var imageData = {
-                    el: el,
-                    file: inputEl.files[0]
-                };
+                    imageData = {
+                        el: el,
+                        file: inputEl.files[0]
+                    };
 
-                editor.fire('imageAdd', imageData);
-            }).bind(this);
-
-            reader.readAsDataURL(inputEl.files[0]);
+                    editor.fire('imageAdd', imageData);
+                },
+                error: function error() {
+                    console.error(arguments);
+                },
+                // Form data
+                data: new FormData(formEl),
+                //Options to tell jQuery not to process data or worry about content-type.
+                cache: false,
+                contentType: false,
+                processData: false
+            });
 
             inputEl.value = '';
         }
@@ -7619,8 +7654,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.italic, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-italic', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.italic },
-                React.createElement('span', { className: 'ae-icon-italic' })
+                { 'aria-label': AlloyEditor.Strings.italic, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-italic", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.italic },
+                React.createElement('span', { className: "ae-icon-italic" })
             );
         }
     });
@@ -7702,22 +7737,22 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container-edit-link' },
+                { className: "ae-container-edit-link" },
                 React.createElement(
                     'button',
-                    { 'aria-label': AlloyEditor.Strings.removeLink, className: 'ae-button', disabled: !this.state.element, onClick: this._removeLink, title: AlloyEditor.Strings.remove },
-                    React.createElement('span', { className: 'ae-icon-unlink' })
+                    { 'aria-label': AlloyEditor.Strings.removeLink, className: "ae-button", disabled: !this.state.element, onClick: this._removeLink, title: AlloyEditor.Strings.remove },
+                    React.createElement('span', { className: "ae-icon-unlink" })
                 ),
                 React.createElement(
                     'div',
-                    { className: 'ae-container-input' },
-                    React.createElement('input', { className: 'ae-input', onChange: this._handleLinkChange, onKeyDown: this._handleKeyDown, placeholder: AlloyEditor.Strings.editLink, ref: 'linkInput', type: 'text', value: this.state.linkHref }),
-                    React.createElement('button', { 'aria-label': AlloyEditor.Strings.clearInput, className: 'ae-button ae-icon-remove', onClick: this._clearLink, style: clearLinkStyle, title: AlloyEditor.Strings.clear })
+                    { className: "ae-container-input" },
+                    React.createElement('input', { className: "ae-input", onChange: this._handleLinkChange, onKeyDown: this._handleKeyDown, placeholder: AlloyEditor.Strings.editLink, ref: "linkInput", type: "text", value: this.state.linkHref }),
+                    React.createElement('button', { 'aria-label': AlloyEditor.Strings.clearInput, className: "ae-button ae-icon-remove", onClick: this._clearLink, style: clearLinkStyle, title: AlloyEditor.Strings.clear })
                 ),
                 React.createElement(
                     'button',
-                    { 'aria-label': AlloyEditor.Strings.confirm, className: 'ae-button', disabled: !this.state.linkHref, onClick: this._updateLink, title: AlloyEditor.Strings.confirm },
-                    React.createElement('span', { className: 'ae-icon-ok' })
+                    { 'aria-label': AlloyEditor.Strings.confirm, className: "ae-button", disabled: !this.state.linkHref, onClick: this._updateLink, title: AlloyEditor.Strings.confirm },
+                    React.createElement('span', { className: "ae-icon-ok" })
                 )
             );
         },
@@ -7916,8 +7951,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
             } else {
                 return React.createElement(
                     'button',
-                    { 'aria-label': AlloyEditor.Strings.link, className: cssClass, 'data-type': 'button-link', onClick: this.props.requestExclusive.bind(ButtonLink.key), tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.link },
-                    React.createElement('span', { className: 'ae-icon-link' })
+                    { 'aria-label': AlloyEditor.Strings.link, className: cssClass, 'data-type': "button-link", onClick: this.props.requestExclusive.bind(ButtonLink.key), tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.link },
+                    React.createElement('span', { className: "ae-icon-link" })
                 );
             }
         }
@@ -8007,8 +8042,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.numberedlist, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-ol', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.numberedlist },
-                React.createElement('span', { className: 'ae-icon-numbered-list' })
+                { 'aria-label': AlloyEditor.Strings.numberedlist, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-ol", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.numberedlist },
+                React.createElement('span', { className: "ae-icon-numbered-list" })
             );
         }
     });
@@ -8099,8 +8134,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.alignLeft, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-paragraph-align-left', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignLeft },
-                React.createElement('span', { className: 'ae-icon-align-left' })
+                { 'aria-label': AlloyEditor.Strings.alignLeft, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-paragraph-align-left", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignLeft },
+                React.createElement('span', { className: "ae-icon-align-left" })
             );
         }
     });
@@ -8191,8 +8226,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.alignRight, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-paragraph-align-right', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignRight },
-                React.createElement('span', { className: 'ae-icon-align-right' })
+                { 'aria-label': AlloyEditor.Strings.alignRight, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-paragraph-align-right", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignRight },
+                React.createElement('span', { className: "ae-icon-align-right" })
             );
         }
     });
@@ -8283,8 +8318,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.alignCenter, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-paragraph-center', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignCenter },
-                React.createElement('span', { className: 'ae-icon-align-center' })
+                { 'aria-label': AlloyEditor.Strings.alignCenter, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-paragraph-center", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignCenter },
+                React.createElement('span', { className: "ae-icon-align-center" })
             );
         }
     });
@@ -8375,8 +8410,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.alignJustify, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-paragraph-justify', onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignJustify },
-                React.createElement('span', { className: 'ae-icon-align-justified' })
+                { 'aria-label': AlloyEditor.Strings.alignJustify, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-paragraph-justify", onClick: this.applyStyle, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.alignJustify },
+                React.createElement('span', { className: "ae-icon-align-justified" })
             );
         }
     });
@@ -8465,8 +8500,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.quote, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-quote', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.quote },
-                React.createElement('span', { className: 'ae-icon-quote' })
+                { 'aria-label': AlloyEditor.Strings.quote, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-quote", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.quote },
+                React.createElement('span', { className: "ae-icon-quote" })
             );
         }
     });
@@ -8548,8 +8583,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.removeformat, className: 'ae-button', 'data-type': 'button-removeformat', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.removeformat },
-                React.createElement('span', { className: 'ae-icon-removeformat' })
+                { 'aria-label': AlloyEditor.Strings.removeformat, className: 'ae-button', 'data-type': "button-removeformat", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.removeformat },
+                React.createElement('span', { className: "ae-icon-removeformat" })
             );
         }
     });
@@ -8638,8 +8673,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.strike, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-strike', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.strike },
-                React.createElement('span', { className: 'ae-icon-strike' })
+                { 'aria-label': AlloyEditor.Strings.strike, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-strike", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.strike },
+                React.createElement('span', { className: "ae-icon-strike" })
             );
         }
     });
@@ -8649,7 +8684,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
 "use strict";
 
 (function () {
-    "use strict";
+    'use strict';
 
     /**
      * The ButtonsStylesListHeader class provides the header of an list of style items.
@@ -8760,10 +8795,10 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             return React.createElement(
                 'li',
-                { role: 'option' },
+                { role: "option" },
                 React.createElement(
                     'button',
-                    { className: 'ae-toolbar-element', onClick: this._removeStyles, tabIndex: this.props.tabIndex },
+                    { className: "ae-toolbar-element", onClick: this._removeStyles, tabIndex: this.props.tabIndex },
                     AlloyEditor.Strings.normal
                 )
             );
@@ -8852,7 +8887,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             // We need to use dangerouselySetInnterHTML since we're not in control of the style
             // preview that is generated by CKEditor.
-            return React.createElement('button', { className: 'ae-toolbar-element', dangerouslySetInnerHTML: { __html: this._preview }, onClick: this._onClick, tabIndex: this.props.tabIndex });
+            return React.createElement('button', { className: "ae-toolbar-element", dangerouslySetInnerHTML: { __html: this._preview }, onClick: this._onClick, tabIndex: this.props.tabIndex });
         },
 
         /**
@@ -8970,10 +9005,10 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             return React.createElement(
                 'div',
-                { className: 'ae-dropdown ae-arrow-box ae-arrow-box-top-left', onFocus: this.focus, onKeyDown: this.handleKey, tabIndex: '0' },
+                { className: "ae-dropdown ae-arrow-box ae-arrow-box-top-left", onFocus: this.focus, onKeyDown: this.handleKey, tabIndex: "0" },
                 React.createElement(
                     'ul',
-                    { className: 'ae-listbox', role: 'listbox' },
+                    { className: "ae-listbox", role: "listbox" },
                     React.createElement(AlloyEditor.ButtonStylesListItemRemove, { editor: this.props.editor }),
                     React.createElement(AlloyEditor.ButtonsStylesListHeader, { name: AlloyEditor.Strings.blockStyles, styles: this._blockStyles }),
                     this._renderStylesItems(this._blockStyles),
@@ -9001,7 +9036,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 items = styles.map(function (item) {
                     return React.createElement(
                         'li',
-                        { key: item.name, role: 'option' },
+                        { key: item.name, role: "option" },
                         React.createElement(AlloyEditor.ButtonStylesListItem, { editor: editor, name: item.name, style: item.style })
                     );
                 });
@@ -9111,19 +9146,19 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container-dropdown ae-has-dropdown' },
+                { className: "ae-container-dropdown ae-has-dropdown" },
                 React.createElement(
                     'button',
-                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.styles + ' ' + activeStyle, className: 'ae-toolbar-element', onClick: this.props.toggleDropdown, role: 'combobox', tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.styles + ' ' + activeStyle },
+                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.styles + ' ' + activeStyle, className: "ae-toolbar-element", onClick: this.props.toggleDropdown, role: "combobox", tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.styles + ' ' + activeStyle },
                     React.createElement(
                         'div',
-                        { className: 'ae-container' },
+                        { className: "ae-container" },
                         React.createElement(
                             'span',
-                            { className: 'ae-container-dropdown-selected-item' },
+                            { className: "ae-container-dropdown-selected-item" },
                             activeStyle
                         ),
-                        React.createElement('span', { className: 'ae-icon-arrow' })
+                        React.createElement('span', { className: "ae-icon-arrow" })
                     )
                 ),
                 buttonStylesList
@@ -9274,8 +9309,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.subscript, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-subscript', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.subscript },
-                React.createElement('span', { className: 'ae-icon-subscript' })
+                { 'aria-label': AlloyEditor.Strings.subscript, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-subscript", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.subscript },
+                React.createElement('span', { className: "ae-icon-subscript" })
             );
         }
     });
@@ -9364,8 +9399,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.superscript, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-superscript', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.superscript },
-                React.createElement('span', { className: 'ae-icon-superscript' })
+                { 'aria-label': AlloyEditor.Strings.superscript, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-superscript", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.superscript },
+                React.createElement('span', { className: "ae-icon-superscript" })
             );
         }
     });
@@ -9460,11 +9495,11 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container ae-has-dropdown' },
+                { className: "ae-container ae-has-dropdown" },
                 React.createElement(
                     'button',
-                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.cell, 'aria-owns': buttonCommandsListId, className: 'ae-button', onClick: this.props.toggleDropdown, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.cell },
-                    React.createElement('span', { className: 'ae-icon-cell' })
+                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.cell, 'aria-owns': buttonCommandsListId, className: "ae-button", onClick: this.props.toggleDropdown, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.cell },
+                    React.createElement('span', { className: "ae-icon-cell" })
                 ),
                 buttonCommandsList
             );
@@ -9595,11 +9630,11 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container ae-has-dropdown' },
+                { className: "ae-container ae-has-dropdown" },
                 React.createElement(
                     'button',
-                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.column, 'aria-owns': buttonCommandsListId, className: 'ae-button', onClick: this.props.toggleDropdown, role: 'listbox', tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.column },
-                    React.createElement('span', { className: 'ae-icon-column' })
+                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.column, 'aria-owns': buttonCommandsListId, className: "ae-button", onClick: this.props.toggleDropdown, role: "listbox", tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.column },
+                    React.createElement('span', { className: "ae-icon-column" })
                 ),
                 buttonCommandsList
             );
@@ -9785,7 +9820,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container-edit-table' },
+                { className: "ae-container-edit-table" },
                 React.createElement(
                     'label',
                     { htmlFor: rowsId },
@@ -9793,8 +9828,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'ae-container-input small' },
-                    React.createElement('input', { className: 'ae-input', id: rowsId, onChange: this._handleChange.bind(this, 'rows'), min: '1', onKeyDown: this._handleKeyDown, placeholder: 'Rows', ref: 'rows', type: 'number', value: this.state.rows })
+                    { className: "ae-container-input small" },
+                    React.createElement('input', { className: "ae-input", id: rowsId, onChange: this._handleChange.bind(this, 'rows'), min: "1", onKeyDown: this._handleKeyDown, placeholder: "Rows", ref: "rows", type: "number", value: this.state.rows })
                 ),
                 React.createElement(
                     'label',
@@ -9803,13 +9838,13 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'ae-container-input small' },
-                    React.createElement('input', { className: 'ae-input', id: colsId, onChange: this._handleChange.bind(this, 'cols'), min: '1', onKeyDown: this._handleKeyDown, placeholder: 'Colums', ref: 'cols', type: 'number', value: this.state.cols })
+                    { className: "ae-container-input small" },
+                    React.createElement('input', { className: "ae-input", id: colsId, onChange: this._handleChange.bind(this, 'cols'), min: "1", onKeyDown: this._handleKeyDown, placeholder: "Colums", ref: "cols", type: "number", value: this.state.cols })
                 ),
                 React.createElement(
                     'button',
-                    { 'aria-label': 'Confirm', className: 'ae-button', onClick: this._createTable },
-                    React.createElement('span', { className: 'ae-icon-ok' })
+                    { 'aria-label': "Confirm", className: "ae-button", onClick: this._createTable },
+                    React.createElement('span', { className: "ae-icon-ok" })
                 )
             );
         }
@@ -9909,16 +9944,16 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container-dropdown-xl ae-has-dropdown' },
+                { className: "ae-container-dropdown-xl ae-has-dropdown" },
                 React.createElement(
                     'button',
-                    { 'aria-expanded': this.props.expanded, 'aria-label': '', className: 'ae-toolbar-element', onClick: this.props.toggleDropdown, role: 'combobox', tabIndex: this.props.tabIndex, title: '' },
+                    { 'aria-expanded': this.props.expanded, 'aria-label': "", className: "ae-toolbar-element", onClick: this.props.toggleDropdown, role: "combobox", tabIndex: this.props.tabIndex, title: "" },
                     React.createElement(
                         'div',
-                        { className: 'ae-container' },
+                        { className: "ae-container" },
                         React.createElement(
                             'span',
-                            { className: 'ae-container-dropdown-selected-item' },
+                            { className: "ae-container-dropdown-selected-item" },
                             activeHeadingIntro,
                             ' ',
                             React.createElement(
@@ -9927,7 +9962,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
                                 activeHeadingLabel
                             )
                         ),
-                        React.createElement('span', { className: 'ae-icon-arrow' })
+                        React.createElement('span', { className: "ae-icon-arrow" })
                     )
                 ),
                 buttonCommandsList
@@ -10019,8 +10054,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
         render: function render() {
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.deleteTable, className: 'ae-button', 'data-type': 'button-table-remove', onClick: this._removeTable, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.deleteTable },
-                React.createElement('span', { className: 'ae-icon-close' })
+                { 'aria-label': AlloyEditor.Strings.deleteTable, className: "ae-button", 'data-type': "button-table-remove", onClick: this._removeTable, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.deleteTable },
+                React.createElement('span', { className: "ae-icon-close" })
             );
         },
 
@@ -10130,11 +10165,11 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-container ae-has-dropdown' },
+                { className: "ae-container ae-has-dropdown" },
                 React.createElement(
                     'button',
-                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.row, 'aria-owns': buttonCommandsListId, className: 'ae-button', onClick: this.props.toggleDropdown, role: 'combobox', tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.row },
-                    React.createElement('span', { className: 'ae-icon-row' })
+                    { 'aria-expanded': this.props.expanded, 'aria-label': AlloyEditor.Strings.row, 'aria-owns': buttonCommandsListId, className: "ae-button", onClick: this.props.toggleDropdown, role: "combobox", tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.row },
+                    React.createElement('span', { className: "ae-icon-row" })
                 ),
                 buttonCommandsList
             );
@@ -10229,8 +10264,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
             } else {
                 return React.createElement(
                     'button',
-                    { 'aria-label': AlloyEditor.Strings.table, className: 'ae-button', 'data-type': 'button-table', onClick: this.props.requestExclusive, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.table },
-                    React.createElement('span', { className: 'ae-icon-table' })
+                    { 'aria-label': AlloyEditor.Strings.table, className: "ae-button", 'data-type': "button-table", onClick: this.props.requestExclusive, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.table },
+                    React.createElement('span', { className: "ae-icon-table" })
                 );
             }
         }
@@ -10338,8 +10373,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.twitter, className: cssClass, 'data-type': 'button-twitter', onClick: this.handleClick, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.twitter },
-                React.createElement('span', { className: 'ae-icon-twitter' })
+                { 'aria-label': AlloyEditor.Strings.twitter, className: cssClass, 'data-type': "button-twitter", onClick: this.handleClick, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.twitter },
+                React.createElement('span', { className: "ae-icon-twitter" })
             );
         },
 
@@ -10454,8 +10489,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.bulletedlist, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-ul', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.bulletedlist },
-                React.createElement('span', { className: 'ae-icon-bulleted-list' })
+                { 'aria-label': AlloyEditor.Strings.bulletedlist, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-ul", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.bulletedlist },
+                React.createElement('span', { className: "ae-icon-bulleted-list" })
             );
         }
     });
@@ -10544,8 +10579,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'button',
-                { 'aria-label': AlloyEditor.Strings.underline, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': 'button-underline', onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.underline },
-                React.createElement('span', { className: 'ae-icon-underline' })
+                { 'aria-label': AlloyEditor.Strings.underline, 'aria-pressed': cssClass.indexOf('pressed') !== -1, className: cssClass, 'data-type': "button-underline", onClick: this.execCommand, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.underline },
+                React.createElement('span', { className: "ae-icon-underline" })
             );
         }
     });
@@ -10705,10 +10740,10 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { 'aria-label': AlloyEditor.Strings.add, className: className, 'data-tabindex': this.props.config.tabIndex || 0, onFocus: this.focus, onKeyDown: this.handleKey, role: 'toolbar', tabIndex: '-1' },
+                { 'aria-label': AlloyEditor.Strings.add, className: className, 'data-tabindex': this.props.config.tabIndex || 0, onFocus: this.focus, onKeyDown: this.handleKey, role: "toolbar", tabIndex: "-1" },
                 React.createElement(
                     'div',
-                    { className: 'ae-container' },
+                    { className: "ae-container" },
                     buttons
                 )
             );
@@ -10730,8 +10765,8 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 if (this.props.selectionData && this.props.selectionData.region) {
                     buttons = React.createElement(
                         'button',
-                        { 'aria-label': AlloyEditor.Strings.add, className: 'ae-button ae-button-add', onClick: this.props.requestExclusive.bind(this, ToolbarAdd.key), title: AlloyEditor.Strings.add },
-                        React.createElement('span', { className: 'ae-icon-add' })
+                        { 'aria-label': AlloyEditor.Strings.add, className: "ae-button ae-button-add", onClick: this.props.requestExclusive.bind(this, ToolbarAdd.key), title: AlloyEditor.Strings.add },
+                        React.createElement('span', { className: "ae-icon-add" })
                     );
                 }
             }
@@ -10950,10 +10985,10 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
                 return React.createElement(
                     'div',
-                    { 'aria-label': AlloyEditor.Strings.styles, className: cssClasses, 'data-tabindex': this.props.config.tabIndex || 0, onFocus: this.focus, onKeyDown: this.handleKey, role: 'toolbar', tabIndex: '-1' },
+                    { 'aria-label': AlloyEditor.Strings.styles, className: cssClasses, 'data-tabindex': this.props.config.tabIndex || 0, onFocus: this.focus, onKeyDown: this.handleKey, role: "toolbar", tabIndex: "-1" },
                     React.createElement(
                         'div',
-                        { className: 'ae-container' },
+                        { className: "ae-container" },
                         buttons
                     )
                 );
@@ -11302,7 +11337,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
 
             return React.createElement(
                 'div',
-                { className: 'ae-toolbars', onKeyDown: this.handleKey },
+                { className: "ae-toolbars", onKeyDown: this.handleKey },
                 toolbars
             );
         },
