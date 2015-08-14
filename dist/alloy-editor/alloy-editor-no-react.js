@@ -7521,6 +7521,9 @@ CKEDITOR.tools.buildTableMap = function (table) {
             $.ajax({
                 url: 'media', //Server script to process data
                 type: 'POST',
+                headers: {
+                    Accept: "application/json"
+                },
                 // xhr: function() {  // Custom XMLHttpRequest
                 //     var myXhr = $.ajaxSettings.xhr();
                 //     if(myXhr.upload){ // Check if upload property exists
