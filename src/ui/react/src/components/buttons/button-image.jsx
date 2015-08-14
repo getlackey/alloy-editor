@@ -99,7 +99,7 @@
             // }
 
             $.ajax({
-                url: 'media',  //Server script to process data
+                url: 'media.json',  //Server script to process data
                 type: 'POST',
                 // xhr: function() {  // Custom XMLHttpRequest
                 //     var myXhr = $.ajaxSettings.xhr();
